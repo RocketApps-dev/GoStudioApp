@@ -16,6 +16,7 @@ type Props = {
   control: Control<any>;
   error: string | null;
   isPassword?: boolean;
+  defaultValue?: string;
   autoComplete?:
     | 'name'
     | 'cc-csc'
@@ -40,6 +41,7 @@ export const Input: React.FC<Props> = ({
   error,
   isPassword,
   autoComplete,
+  defaultValue,
 }) => {
   const [eyeIcon, setEyeIcon] = useState('eye');
   const [hidePass, setHidePass] = useState(isPassword);
@@ -48,6 +50,7 @@ export const Input: React.FC<Props> = ({
     <Controller
       name={name}
       control={control}
+      defaultValue={defaultValue}
       render={({ field: { value, onChange } }) => (
         <S.ContainerInput>
           <View style={{ marginHorizontal: 5 }}>

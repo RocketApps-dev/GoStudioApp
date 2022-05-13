@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { AppointmentsStatus } from '../../dtos/AppointmentsStatus';
+import { returnColorWithStatusAppointments } from '../../global/functions/returnColorWithStatusAppointments';
 
 import * as S from './styles';
 
@@ -11,6 +12,8 @@ type Props = {
   appointmentDay: string;
   appointmentHour: string;
   status: AppointmentsStatus;
+  onPress?: () => void;
+  onLongPress?: () => void;
 };
 
 export const ItemList: React.FC<Props> = ({
@@ -18,10 +21,12 @@ export const ItemList: React.FC<Props> = ({
   appointmentDay,
   appointmentHour,
   status,
+  onPress,
+  onLongPress,
 }) => {
   const [y, m, d] = appointmentDay.split('-');
   return (
-    <S.BoxItem>
+    <S.BoxItem onPress={onPress} onLongPress={onLongPress}>
       <S.ImageStudio source={require('../../assets/images/image-circle.png')} />
       <S.ContainerTexts>
         <View style={{ flexDirection: 'row' }}>
@@ -41,7 +46,8 @@ export const ItemList: React.FC<Props> = ({
         </View>
       </S.ContainerTexts>
       <S.StatusTitleBox>
-        <S.TitleItem style={{ color: 'green' }}>
+        <S.TitleItem
+          style={{ color: returnColorWithStatusAppointments(status) }}>
           {
             //@ts-ignore
             AppointmentsStatus[status]

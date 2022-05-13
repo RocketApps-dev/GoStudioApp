@@ -13,7 +13,7 @@ export const Container = styled.View`
 
 export const ContainerCalendarScheduling = styled.View`
   width: 100%;
-  height: 100%;
+  height: 95%;
 
   align-items: center;
 `;

@@ -96,7 +96,7 @@ export const Scheduling: React.FC = () => {
               <FlatList
                 data={availableTimes}
                 numColumns={4}
-                style={{ height: 150 }}
+                style={{ height: 130 }}
                 renderItem={item => (
                   <ButtonTimeSelect
                     pressFunction={() => {

@@ -21,5 +21,7 @@ export const InputText = styled.TextInput`
   width: 295px;
   height: 50px;
 
-  color: ${AppColors.inputTextColor};
+  color: white;
+
+  font-size: 18px;
 `;

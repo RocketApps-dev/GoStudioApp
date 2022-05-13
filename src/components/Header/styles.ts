@@ -7,7 +7,7 @@ const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient);
 
 export const BoxHeader = styled.View`
   width: 100%;
-  height: 120px;
+  height: 90px;
 
   background-color: #28262e;
 
@@ -37,7 +37,7 @@ export const UserName = styled.Text`
 export const ContainerUserImage = styled.TouchableOpacity`
   position: absolute;
   right: 10px;
-  top: 30px;
+  top: 15px;
   right: 20px;
 `;
 
@@ -51,4 +51,6 @@ export const ImageShimmer = styled(ShimmerPlaceHolder).attrs({})`
 export const ImageUser = styled.Image`
   width: 56px;
   height: 56px;
+
+  border-radius: 10px;
 `;

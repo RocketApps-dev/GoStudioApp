@@ -68,5 +68,50 @@ export const useAppointmets = () => {
     }
   }, []);
 
-  return { loading, myAppointments, getMyAppointments };
+  const cancelAppointment = useCallback(async (appointmentId: string) => {
+    try {
+      setLoading(true);
+      const token = await AsyncStorage.getItem('@gostudio:token');
+
+      await api.delete('/appointments/cancel', {
+        headers: { Authorization: `Bearer ${token}` },
+        params: { id: appointmentId },
+      });
+
+      ref.current.alertWithType(
+        MessageType.SUCCESS,
+        'Sucesso!',
+        'O agendamento foi cancelado com sucesso!',
+      );
+
+      getMyAppointments();
+      setLoading(false);
+    } catch (err: any) {
+      if (err.response) {
+        const error = err as AxiosError;
+        const message = error.response?.data as any;
+
+        if (error.response?.status == 403 || error.response?.status == 401) {
+          ref.current.alertWithType(
+            MessageType.ERROR,
+            'Ops!!!',
+            'Sua sessão expirou, faça login novamente!!',
+          );
+
+          signOut();
+          return;
+        }
+
+        ref.current.alertWithType(
+          MessageType.ERROR,
+          'Ops!!!',
+          message.error || 'Erro inesperado',
+        );
+      }
+
+      setLoading(false);
+    }
+  }, []);
+
+  return { loading, myAppointments, getMyAppointments, cancelAppointment };
 };

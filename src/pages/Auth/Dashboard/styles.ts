@@ -34,4 +34,9 @@ export const ContainerList = styled.View`
   align-items: center;
 `;
 
+export const ContainerListItems = styled.View`
+  width: 100%;
+  height: 85%;
 
+  padding-bottom: 40px;
+`;

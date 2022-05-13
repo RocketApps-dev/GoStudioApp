@@ -38,6 +38,7 @@ export type UserProps = {
   accountAmbient: string;
   accountDocumentStatus: string;
   roles: string[];
+  avatar?: string;
 };
 
 interface AuthContextProps {
