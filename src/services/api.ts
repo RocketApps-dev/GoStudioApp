@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { URL_API } from '../../env.json';
+
 export const api = axios.create({
-  baseURL: 'https://rocketapps.dev/api/gostudio',
+  baseURL: URL_API,
 });
